@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import NavBar from './NavBar';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import emailjs from "emailjs-com"
+import emailjs from "@emailjs/browser"
 
 const About = ({ date, time }) => {
 
@@ -11,14 +11,9 @@ const About = ({ date, time }) => {
     const [schedule, setSchedule] = useState('')
 
     var endtime = time.slice(0, 3) + " " + schedule;
-    const sendData = (e) => {
-
-        emailjs.sendForm('service_mocy6ly','template_2kq4289', title, about, "user_ZAGjoe6gJVVDW5JLRe4NG")
-        .then(res =>{
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
-        })
+    
+    const form = useRef();
+    const sendData = () => {
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -38,11 +33,22 @@ const About = ({ date, time }) => {
             .catch(error => console.log('error', error));
     }
 
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        emailjs.sendForm('service_mocy6ly','template_2kq4289', e.target, "user_ZAGjoe6gJVVDW5JLRe4NG")
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+
     return (
         <>
             <NavBar />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Form style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}>
+                <Form style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}  ref={form} onSubmit={sendEmail}>
                     <div style={{ margin: '20px' }}>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
@@ -62,7 +68,7 @@ const About = ({ date, time }) => {
 
                         <Form.Group controlId="formGridState">
                             <Form.Label>Meeting Schedule</Form.Label>
-                            <Form.Select defaultValue="Choose..." onChange={(e) => setSchedule(e.target.value)}>
+                            <Form.Select defaultValue="Choose..." onChange={(e) => setSchedule(e.target.value)} name='Schedule'>
                                 <option>Choose...</option>
                                 <option>5 min</option>
                                 <option>10 min</option>
@@ -75,15 +81,18 @@ const About = ({ date, time }) => {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
 
-                        <Link to='/'><Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
+                        <Link to='/'><Button variant="primary"  style={{ marginLeft: '50px' }}>
                             Back
                         </Button></Link>
-                        <Link to='/thank-you'><Button variant="primary" type="submit" style={{ marginLeft: '50px' }} onClick={sendData}>
+                        <Link to='/thank-you'><Button variant="primary"  style={{ marginLeft: '50px' }} onClick={sendData}>
                             Comfirm
                         </Button></Link>
-                        <Link to='/view-events'><Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
+                        <Link to='/view-events'><Button variant="primary"  style={{ marginLeft: '50px' }}>
                             View All Events
                         </Button></Link>
+                       <Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
+                            send mail
+                        </Button>
                         <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} %0D ${time}-${endtime} %0D ${about}`}>
                             send mail
                         </a>
