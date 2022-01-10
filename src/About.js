@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavBar from './NavBar';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import emailjs from "emailjs-com"
 
 const About = ({ date, time }) => {
 
@@ -10,7 +11,14 @@ const About = ({ date, time }) => {
     const [schedule, setSchedule] = useState('')
 
     var endtime = time.slice(0, 3) + " " + schedule;
-    const sendData = () => {
+    const sendData = (e) => {
+
+        emailjs.sendForm('service_mocy6ly','template_2kq4289', title, about, "user_ZAGjoe6gJVVDW5JLRe4NG")
+        .then(res =>{
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -39,11 +47,12 @@ const About = ({ date, time }) => {
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                             <Form.Label>Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Title" onChange={(e) => setTitle(e.target.value)} />
+                            <Form.Control type="text" placeholder="Enter Title" name='title' onChange={(e) => setTitle(e.target.value)} />
                         </Form.Group>
                         <Form.Label>About Program</Form.Label>
                         <FloatingLabel controlId="floatingTextarea2">
                             <Form.Control
+                            name='about'
                                 as="textarea"
                                 placeholder="Leave a comment here"
                                 style={{ height: '100px' }}
