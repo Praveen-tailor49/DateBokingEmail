@@ -75,7 +75,7 @@ const About = ({ date, time }) => {
                         <Link to='/view-events'><Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
                             View All Events
                         </Button></Link>
-                        <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} %0D ${time} - ${endtime} %0D ${about}`}>
+                        <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} %0D ${time}-${endtime} %0D ${about}`}>
                             send mail
                         </a>
                     </div>
