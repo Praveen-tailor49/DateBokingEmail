@@ -40,8 +40,8 @@ const Meeting = ({ date }) => {
 
     return (
         <>
-            <Table striped bordered hover style={{ textAlign: 'center' }}>
-                <thead>
+            <Table striped bordered hover style={{ textAlign: 'center' }} id='table'>
+                <thead id='table_body'>
                     <tr>
                         <th>No</th>
                         <th>Title</th>
@@ -51,7 +51,7 @@ const Meeting = ({ date }) => {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id='table_body'>
                     {
                         data.map(data => {
                             if (date.toString().slice(0, 15) === data.date) {
@@ -77,7 +77,7 @@ const Meeting = ({ date }) => {
             </Table>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
 
-                <Link to='/view-events'><Button variant="primary"> View All Events </Button></Link>
+                <Link to='/view-events'><Button id='button_meeting' variant="primary"> View All Events </Button></Link>
             </div>
         </>
     )
