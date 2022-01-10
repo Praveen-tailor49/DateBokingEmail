@@ -42,7 +42,11 @@ const About = ({ date, time }) => {
           }, (error) => {
               console.log(error.text);
           });
-      };
+      }
+
+    //   const sendData1 = () => {
+
+    //   }
 
     return (
         <>
@@ -68,7 +72,7 @@ const About = ({ date, time }) => {
 
                         <Form.Group controlId="formGridState">
                             <Form.Label>Meeting Schedule</Form.Label>
-                            <Form.Select defaultValue="Choose..." onChange={(e) => setSchedule(e.target.value)} name='Schedule'>
+                            <Form.Select defaultValue="Choose..." onChange={(e) => setSchedule(e.target.value)} name='schedule'>
                                 <option>Choose...</option>
                                 <option>5 min</option>
                                 <option>10 min</option>
@@ -78,6 +82,18 @@ const About = ({ date, time }) => {
                                 <option>60 min</option>
                             </Form.Select>
                         </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>date</Form.Label>
+                            <Form.Control style={{border:'none'}} type="text" value={date.toString().slice(0, 15)} placeholder="Enter Title" name='date' onChange={(e) => setTitle(e.target.value)} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>time</Form.Label>
+                            <Form.Control  value={time}  type="text" placeholder="Enter Title" name='time' onChange={(e) => setTitle(e.target.value)} />
+                        </Form.Group>
+
+    
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
 
@@ -92,6 +108,10 @@ const About = ({ date, time }) => {
                         </Button></Link>
                        <Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
                             send mail
+                        </Button>
+
+                        <Button variant="primary" type="submit" style={{ marginLeft: '50px' }}  >
+                            send mail1
                         </Button>
                         <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} %0D ${time}-${endtime} %0D ${about}`}>
                             send mail
