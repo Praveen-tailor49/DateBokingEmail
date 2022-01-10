@@ -3,19 +3,19 @@ import NavBar from './NavBar';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-const About = ({date, time}) => {
+const About = ({ date, time }) => {
 
     const [title, setTitle] = useState('')
     const [about, setAbout] = useState('')
     const [schedule, setSchedule] = useState('')
 
-    var endtime = time.slice(0,3)+" "+schedule;
+    var endtime = time.slice(0, 3) + " " + schedule;
     const sendData = () => {
-        
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({ "title": title, "date": date.toString().slice(0,15), "time": time, "about":about, 'endTime':endtime });
+        var raw = JSON.stringify({ "title": title, "date": date.toString().slice(0, 15), "time": time, "about": about, 'endTime': endtime });
 
         var requestOptions = {
             method: 'POST',
@@ -39,7 +39,7 @@ const About = ({date, time}) => {
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                             <Form.Label>Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Title" onChange={(e)=> setTitle(e.target.value)} />
+                            <Form.Control type="text" placeholder="Enter Title" onChange={(e) => setTitle(e.target.value)} />
                         </Form.Group>
                         <Form.Label>About Program</Form.Label>
                         <FloatingLabel controlId="floatingTextarea2">
@@ -47,13 +47,13 @@ const About = ({date, time}) => {
                                 as="textarea"
                                 placeholder="Leave a comment here"
                                 style={{ height: '100px' }}
-                                onChange={(e)=> setAbout(e.target.value)}
+                                onChange={(e) => setAbout(e.target.value)}
                             />
                         </FloatingLabel>
 
                         <Form.Group controlId="formGridState">
                             <Form.Label>Meeting Schedule</Form.Label>
-                            <Form.Select defaultValue="Choose..." onChange={(e)=> setSchedule(e.target.value)}>
+                            <Form.Select defaultValue="Choose..." onChange={(e) => setSchedule(e.target.value)}>
                                 <option>Choose...</option>
                                 <option>5 min</option>
                                 <option>10 min</option>
@@ -75,6 +75,11 @@ const About = ({date, time}) => {
                         <Link to='/view-events'><Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
                             View All Events
                         </Button></Link>
+                        <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} 
+                         ${time} - ${endtime}
+                         ${about}`}>
+                            send mail
+                        </a>
                     </div>
 
                 </Form>
