@@ -80,11 +80,16 @@
   }
 
   #show{
+<<<<<<< HEAD
     width: 35% !important;
     margin: 0 !important;
   }
 
   #showButton{
     width: 35% !important;
+=======
+    width: 100%;
+    margin: 0;
+>>>>>>> 99eb7e407800002195cd657e41322d887e146fac
   }
 }
