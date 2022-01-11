@@ -55,6 +55,16 @@ const About = ({ date, time, id }) => {
                 <Form className='form_div' style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}  ref={form} onSubmit={sendEmail}>
                     <div style={{ margin: '20px' }}>
 
+                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>date</Form.Label>
+                            <Form.Control style={{border:'none'}} type="text" value={date.toString().slice(0, 15)} placeholder="Enter Title" name='date' onChange={(e) => setTitle(e.target.value)} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>time</Form.Label>
+                            <Form.Control  value={time} style={{border:'none'}}  type="text" placeholder="Enter Title" name='time' onChange={(e) => setTitle(e.target.value)} />
+                        </Form.Group>
+
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                             <Form.Label>Title</Form.Label>
                             <Form.Control type="text" placeholder="Enter Title" name='title' onChange={(e) => setTitle(e.target.value)} />
@@ -82,18 +92,6 @@ const About = ({ date, time, id }) => {
                                 <option>60 min</option>
                             </Form.Select>
                         </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Label>date</Form.Label>
-                            <Form.Control style={{border:'none'}} type="text" value={date.toString().slice(0, 15)} placeholder="Enter Title" name='date' onChange={(e) => setTitle(e.target.value)} />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Label>time</Form.Label>
-                            <Form.Control  value={time}  type="text" placeholder="Enter Title" name='time' onChange={(e) => setTitle(e.target.value)} />
-                        </Form.Group>
-
-    
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
 
