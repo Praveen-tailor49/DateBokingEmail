@@ -105,6 +105,22 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  #show{
+    width: 70% !important;
+    margin: 0 !important;
+  }
+
+  #showButton{
+    width: 70% !important;
+  }
+
+  #button_meeting{
+    font-size: 10px;
+    margin-left: 100px !important;
+  }
+}
+
 
 @media screen and (max-width: 320px) {
   #show{
