@@ -56,6 +56,10 @@ const Home = ({ sendData }) => {
                         value={date}
                         onClickDay={handleShow}
                         onClickMonth={handleShow}
+                        minDate={new Date()}
+                        tileDisabled={({ date }) =>
+                            date.getDay() === 0 || date.getDay() === 6
+                        }
                     />
                 </div>
 
