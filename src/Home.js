@@ -14,9 +14,15 @@ const Home = ({ sendData }) => {
     const [time, setTime] = useState('');
     const [id, setId] = useState('');
     const [button, setButton] = useState([]);
+    const [booking, setBooking] = useState([]);
     
 
     useEffect(() => {
+        meeting_Button();
+        bookingData();
+    },[])
+
+    const meeting_Button = () =>{
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
@@ -26,11 +32,26 @@ const Home = ({ sendData }) => {
             .then(response => response.json())
             .then(result => setButton(result))
             .catch(error => console.log('error', error));
-    },[])
+    }
+
+    const bookingData = () => {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+          };
+          
+          fetch("https://json-database-datebooking.herokuapp.com/schedule", requestOptions)
+            .then(response => response.json())
+            .then(result => setBooking(result))
+            .catch(error => console.log('error', error));
+    }
 
     const handleShow = (e) => {
         setDate(e)
 
+        enbaleButton()
+
+        dis(e)
         document.getElementById('show').style.display = 'block';
 
     }
@@ -44,6 +65,21 @@ const Home = ({ sendData }) => {
         document.getElementById('showButton').style.display = 'block';
     }
 
+    const enbaleButton = () => {
+        button.forEach(data => {
+            document.getElementById(data.id).disabled = false;
+        })
+    }
+
+    const dis = (d = date) => {
+
+
+        booking.forEach(val => {
+            if (d.toString().slice(0, 15) === val.date) {
+                document.getElementById(val.btn).disabled = true;
+            }
+        })
+    }
 
 
     return (
@@ -69,6 +105,17 @@ const Home = ({ sendData }) => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gridGap: '20px' }}>
 
                         {
+                            booking.length !== 0 ?
+                            button.map(data => {
+                                return (
+                                    <>
+                                        <Button variant="primary" id={data.id} value={data.time} style={{ width: '100px', marginTop: "5px" }} onClick={(e) => { getTime(e.target.value, data.id); show() }} >
+                                            {data.time}
+                                        </Button>
+                                    </>
+                                )
+                            })
+                            :
                             button.map(data => {
                                 return (
                                     <>
@@ -78,6 +125,7 @@ const Home = ({ sendData }) => {
                                     </>
                                 )
                             })
+                            
                         }
                     </div>
                 </div>
