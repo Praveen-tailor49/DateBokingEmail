@@ -48,9 +48,9 @@ const Home = ({ sendData }) => {
         <>
             <NavBar />
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div class='main_div' style={{ display: 'flex', justifyContent: 'center' }}>
 
-                <div style={{ marginTop: "5%", marginBottom: '1%' }}>
+                <div id='calender_div' style={{ marginTop: "5%", marginBottom: '1%' }}>
                     <h1 style={{ marginBottom: '10%' }}>Schedule Events</h1>
                     <Calendar
                         value={date}
@@ -87,7 +87,7 @@ const Home = ({ sendData }) => {
                     </Button></Link>
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div style={{ marginTop: '50px' }}  class='table_row'>
 
                 <Meeting date={date} />
             </div>

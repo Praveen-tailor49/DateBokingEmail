@@ -6,6 +6,7 @@ import Home from './Home';
 import End from './End';
 import AllEvent from './AllEvent';
 import About from './About';
+import  './App.css';
 import Thankyou from './Thankyou';
 
 

@@ -41,3 +41,50 @@
 .react-calender{
   width: 100%;
 }
+
+
+/* About page midea queey */
+
+@media screen and (max-width: 768px) {
+  #meeting_div{
+    width: 100% !important;
+  }
+  #button_a{
+    font-size: 12px;
+    margin-left: 20px !important;
+  }
+
+
+  .main_div{
+      width: 100% !important;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+  }
+
+
+
+  .table_row{
+    width: 56% !important;
+    
+  }
+
+  #table_body{
+    font-size: 15px;
+  }
+
+  #button_meeting{
+    font-size: 10px;
+  }
+
+  #show{
+    width: 35% !important;
+    margin: 0 !important;
+  }
+
+  #showButton{
+    width: 35% !important;
+  }
+}

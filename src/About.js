@@ -44,15 +44,12 @@ const About = ({ date, time }) => {
           });
       }
 
-    //   const sendData1 = () => {
-
-    //   }
 
     return (
         <>
             <NavBar />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Form style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}  ref={form} onSubmit={sendEmail}>
+            <div  style={{ display: 'flex', justifyContent: 'center' }}>
+                <Form id='meeting_div' style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}  ref={form} onSubmit={sendEmail}>
                     <div style={{ margin: '20px' }}>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
@@ -97,25 +94,15 @@ const About = ({ date, time }) => {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
 
-                        <Link to='/'><Button variant="primary"  style={{ marginLeft: '50px' }}>
+                        <Link to='/'><Button id='button_a'  variant="primary"  style={{ marginLeft: '20px' }}>
                             Back
                         </Button></Link>
-                        <Link to='/thank-you'><Button variant="primary"  style={{ marginLeft: '50px' }} onClick={sendData}>
+                        <Link to='/thank-you'><Button id='button_a' variant="primary"  style={{ marginLeft: '50px' }} onClick={sendData}>
                             Comfirm
                         </Button></Link>
-                        <Link to='/view-events'><Button variant="primary"  style={{ marginLeft: '50px' }}>
-                            View All Events
-                        </Button></Link>
-                       <Button variant="primary" type="submit" style={{ marginLeft: '50px' }}>
+                       <Button id='button_a' variant="primary" type="submit" style={{ marginLeft: '50px' }}>
                             send mail
                         </Button>
-
-                        <Button variant="primary" type="submit" style={{ marginLeft: '50px' }}  >
-                            send mail1
-                        </Button>
-                        <a href={`mailto:praveentailor4920@gmail.com?subject=${title}&body=${title} %0D ${time}-${endtime} %0D ${about}`}>
-                            send mail
-                        </a>
                     </div>
 
                 </Form>
