@@ -88,3 +88,21 @@
     width: 35% !important;
   }
 }
+
+
+
+@media screen and (max-width: 375px) {
+  #show{
+    width: 70% !important;
+    margin: 0 !important;
+  }
+
+  #showButton{
+    width: 75% !important;
+  }
+
+  #button_meeting{
+    font-size: 10px;
+    margin-left: 100px !important;
+  }
+}
