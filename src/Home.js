@@ -50,9 +50,9 @@ const Home = ({ sendData }) => {
         <>
             <NavBar />
 
-            <div class='main_div' style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className= 'main_div'  style={{ display: 'flex', justifyContent: 'center' }}>
 
-                <div id='calender_div' style={{ marginTop: "5%", marginBottom: '1%' }}>
+                <div  style={{marginTop: "5%", marginBottom: '1%' }}>
                     <h1 style={{ marginBottom: '10%' }}>Schedule Events</h1>
                     <Calendar
                         value={date}
@@ -65,7 +65,7 @@ const Home = ({ sendData }) => {
                     />
                 </div>
 
-                <div id='show' style={{ width: '10%', marginLeft: '100px', marginTop: "9%", display: 'none' }}>
+                <div id='show' style={{  marginLeft: '100px', marginTop: "9%", display: 'none' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gridGap: '20px' }}>
 
                         {
@@ -93,7 +93,7 @@ const Home = ({ sendData }) => {
                     </Button></Link>
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}  class='table_row'>
+            <div style={{ marginTop: '50px' }}  class='table_div'>
 
                 <Meeting date={date} />
             </div>
