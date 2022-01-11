@@ -12,6 +12,7 @@ import Meeting from './Meeting';
 const Home = ({ sendData }) => {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState('');
+    const [id, setId] = useState('');
     const [button, setButton] = useState([]);
     
 
@@ -34,8 +35,9 @@ const Home = ({ sendData }) => {
 
     }
 
-    const getTime = (e) => {
+    const getTime = (e, id) => {
         setTime(e)
+        setId(id)
     }
 
     const show = () => {
@@ -70,7 +72,7 @@ const Home = ({ sendData }) => {
                             button.map(data => {
                                 return (
                                     <>
-                                        <Button variant="primary" value={data.time} style={{ width: '100px', marginTop: "5px" }} onClick={(e) => { getTime(e.target.value); show() }} >
+                                        <Button variant="primary" value={data.time} style={{ width: '100px', marginTop: "5px" }} onClick={(e) => { getTime(e.target.value, data.id); show() }} >
                                             {data.time}
                                         </Button>
                                     </>
@@ -86,7 +88,7 @@ const Home = ({ sendData }) => {
                     <Button variant="primary" value='3.30' style={{ width: '100px' }}>
                         Cencal
                     </Button>
-                    <Link to='/abouts'> <Button variant="primary" value='4.30' style={{ width: '100px', marginLeft: "10px", }} onClick={() => sendData(date, time)}>
+                    <Link to='/abouts'> <Button variant="primary" value='4.30' style={{ width: '100px', marginLeft: "10px", }} onClick={() => sendData(date, time, id)}>
                         Comfirm
                     </Button></Link>
                 </div>

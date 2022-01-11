@@ -14,10 +14,13 @@ function App() {
 
   const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [id, setId] = useState('');
 
-  const sendData = (date, time) => {
+
+  const sendData = (date, time, id) => {
     setDate(date)
     setTime(time)
+    setId(id)
   }
   
   return (
@@ -27,7 +30,7 @@ function App() {
         <Route exact path='/' element={<Home sendData={sendData} />} />
         <Route exact path='/complete' element={<End  />} />
         <Route exact path='/view-events' element={<AllEvent  />} />
-        <Route exact path='/abouts' element={<About date={date} time={time} />} />
+        <Route exact path='/abouts' element={<About date={date} time={time} id={id} />} />
         <Route exact path='/thank-you' element={<Thankyou  />} />
 
       </Routes>
