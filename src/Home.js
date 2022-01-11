@@ -72,8 +72,6 @@ const Home = ({ sendData }) => {
     }
 
     const dis = (d = date) => {
-
-
         booking.forEach(val => {
             if (d.toString().slice(0, 15) === val.date) {
                 document.getElementById(val.btn).disabled = true;
@@ -119,7 +117,7 @@ const Home = ({ sendData }) => {
                             button.map(data => {
                                 return (
                                     <>
-                                        <Button variant="primary" value={data.time} style={{ width: '100px', marginTop: "5px" }} onClick={(e) => { getTime(e.target.value, data.id); show() }} >
+                                        <Button variant="primary" id={data.id} value={data.time} style={{ width: '100px', marginTop: "5px" }} onClick={(e) => { getTime(e.target.value, data.id); show() }} >
                                             {data.time}
                                         </Button>
                                     </>
