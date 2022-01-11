@@ -64,7 +64,7 @@ const Home = ({ sendData }) => {
                 </div>
 
                 <div id='show' style={{ width: '10%', marginLeft: '100px', marginTop: "9%", display: 'none' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gridGap: '20px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gridGap: '20px' }}>
 
                         {
                             button.map(data => {
