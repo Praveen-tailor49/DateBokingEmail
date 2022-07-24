@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import NavBar from './NavBar';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser"
 
 const About = ({ date, time, id }) => {
@@ -9,6 +9,7 @@ const About = ({ date, time, id }) => {
     const [title, setTitle] = useState('')
     const [about, setAbout] = useState('')
     const [schedule, setSchedule] = useState('')
+    const navigate = useNavigate()
 
     var endtime = time.slice(0, 3) + " " + schedule;
     
@@ -28,17 +29,20 @@ const About = ({ date, time, id }) => {
         };
 
         fetch("https://json-database-datebooking.herokuapp.com/schedule", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => response.json())
+            .then(result => {
+                navigate('/thank-you')
+            })
             .catch(error => console.log('error', error));
     }
 
 
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_mocy6ly','template_2kq4289', e.target, "user_ZAGjoe6gJVVDW5JLRe4NG")
+        emailjs.sendForm('service_n0n3cu5','template_p3zgblv', e.target, "45joN3WoSJXnEQYhG")
           .then((result) => {
               console.log(result.text);
+              sendData()
           }, (error) => {
               console.log(error.text);  
           });
@@ -52,17 +56,27 @@ const About = ({ date, time, id }) => {
         <>
             <NavBar />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Form className='form_div' style={{ width: '30%', boxShadow: '1px 10px 5px #888888', marginTop: '10%' }}  ref={form} onSubmit={sendEmail}>
+                <Form className='form_div' style={{ width: '30%', boxShadow: '1px 10px 5px #888888'}}  ref={form} onSubmit={sendEmail}>
                     <div style={{ margin: '20px' }}>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail" >
                             <Form.Label>date</Form.Label>
-                            <Form.Control style={{border:'none'}} type="text" value={date.toString().slice(0, 15)} placeholder="Enter Title" name='date' onChange={(e) => setTitle(e.target.value)} />
+                            <Form.Control style={{border:'none'}} type="text" value={date.toString().slice(0, 15)}  name='date' onChange={(e) => setTitle(e.target.value)} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                             <Form.Label>time</Form.Label>
-                            <Form.Control  value={time} style={{border:'none'}}  type="text" placeholder="Enter Title" name='time' onChange={(e) => setTitle(e.target.value)} />
+                            <Form.Control  value={time} style={{border:'none'}}  type="text"  name='time' onChange={(e) => setTitle(e.target.value)} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control    type="text" placeholder="Enter name" name='name'/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control    type="text" placeholder="Enter email" name='email'/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
@@ -98,11 +112,11 @@ const About = ({ date, time, id }) => {
                         <Link to='/'><Button variant="primary" id='about_btn'   style={{ marginLeft: '50px' }}>
                             Back
                         </Button></Link>
-                        <Link to='/thank-you'><Button variant="primary" id='about_btn'  style={{ marginLeft: '50px' }} onClick={sendData}>
+                        {/* <Link to='/thank-you'><Button variant="primary" id='about_btn'  style={{ marginLeft: '50px' }} onClick={sendData}>
                             Comfirm
-                        </Button></Link>
+                        </Button></Link> */}
                        <Button variant="primary"  type="submit" id='about_btn' style={{ marginLeft: '50px' }}>
-                            send mail
+                            Send mail
                         </Button>
 
                     </div>

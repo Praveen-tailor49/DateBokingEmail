@@ -23,9 +23,9 @@ const Thankyou = () => {
                 <Link to='/view-events'><Button variant="primary" type="submit" style={{ marginTop: '50px', marginLeft:'10px' }}>
                     All Events
                 </Button></Link>
-                <Button variant="primary" type="submit" style={{ marginTop: '50px',  marginLeft:'10px' }}>
+                {/* <Button variant="primary" type="submit" style={{ marginTop: '50px',  marginLeft:'10px' }}>
                   Add to Google Calender
-                </Button>
+                </Button> */}
             </div>
         </>
     )

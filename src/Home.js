@@ -99,7 +99,7 @@ const Home = ({ sendData }) => {
                     />
                 </div>
 
-                <div id='show' style={{  marginLeft: '100px', marginTop: "9%", display: 'none' }}>
+                <div id='show' style={{  marginLeft: '100px', marginTop: "10%", display: 'none', height:'19rem', overflow:'scroll' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gridGap: '20px' }}>
 
                         {
@@ -131,12 +131,12 @@ const Home = ({ sendData }) => {
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div id='showButton' style={{ marginLeft: '20px', marginTop: "50px", display: 'none' }}>
-                    <Button variant="primary" value='3.30' style={{ width: '100px' }}>
-                        Cencal
-                    </Button>
-                    <Link to='/abouts'> <Button variant="primary" value='4.30' style={{ width: '100px', marginLeft: "10px", }} onClick={() => sendData(date, time, id)}>
+                    <Link to='/abouts'> <Button variant="primary" value='4.30' style={{ width: '100px' }} onClick={() => sendData(date, time, id)}>
                         Comfirm
                     </Button></Link>
+                    <Button variant="primary" value='3.30' style={{ width: '100px', marginLeft: "10px", }}>
+                        Cencal
+                    </Button>
                 </div>
             </div>
             <div style={{ marginTop: '50px' }}  class='table_div'>
